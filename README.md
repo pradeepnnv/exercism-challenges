@@ -1,2 +1,5 @@
 # exercism-challenges
-Repo contains code for solving various exercism challenges
+Repo contains my code for solving exercism challenges in Go track.
+
+Refer to https://exercism.io/my/tracks/go.
+
