@@ -1,6 +1,7 @@
 package bob
 
 import (
+	"fmt"
 	"regexp"
 	"strings"
 )
@@ -8,9 +9,12 @@ import (
 // Hey returns Bob's response based on the input remark
 func Hey(remark string) string {
 	// var r string
-	if strings.Trim(remark, " ") == "" { //Address Bob without actually saying anything
+	fmt.Println(remark)
+	if m, _ := regexp.Match("[\t\n]*", []byte(remark)); m { //Address Bob without actually saying anything
 		return "Fine. Be that way!"
-	} else if m, _ := regexp.Match("^[A-Z[:punct:] ]+[?]$", []byte(remark)); m { //Yell a Question
+	} else if strings.Trim(remark, " ") == "" {
+		return "Fine. Be that way!"
+	} else if m, _ := regexp.Match("^[A-Z' ]+[?]$", []byte(remark)); m { //Yell a Question
 		return "Calm down, I know what I'm doing!"
 	}
 	// else if m, _ := regexp.Match("^[A-Z| |0-9|,]*[!]*$", []byte(remark)); m { //Yell
@@ -29,7 +33,12 @@ func Hey(remark string) string {
 	// 		}
 	// 	}
 	// }
-	w := words[len(words)-1] //w is the final word
+	var w string
+	if len(words) > 0 {
+		w = words[len(words)-1] //w is the final word
+	} else {
+		return "Whatever."
+	}
 	// m, _ := regexp.Match("^[A-Z]{2,}[?]$", []byte(w)); m { //Yell a Question
 	// 	return "Calm down, I know what I'm doing!"
 	// } else
