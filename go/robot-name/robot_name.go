@@ -9,7 +9,7 @@ type Robot struct {
 	name string
 }
 
-var existingRobotNames map[string]int
+// var existingRobotNames map[string]int
 
 func (r *Robot) Name() (string, error) {
 	//Initialize if name is empty
