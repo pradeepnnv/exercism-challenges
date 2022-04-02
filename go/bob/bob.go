@@ -1,52 +1,31 @@
+// This is a "stub" file.  It's a little start on your solution.
+// It's not a complete solution though; you have to write some code.
+
+// Package bob should have a package comment that summarizes what it's about.
+// https://golang.org/doc/effective_go.html#commentary
 package bob
 
 import (
 	"fmt"
 	"regexp"
-	"strings"
 )
 
-// Hey returns Bob's response based on the input remark
+// Hey should have a comment documenting it.
 func Hey(remark string) string {
-	// var r string
-	fmt.Println(remark)
-	if m, _ := regexp.Match("[\t\n]*", []byte(remark)); m { //Address Bob without actually saying anything
-		return "Fine. Be that way!"
-	} else if strings.Trim(remark, " ") == "" {
-		return "Fine. Be that way!"
-	} else if m, _ := regexp.Match("^[A-Z' ]+[?]$", []byte(remark)); m { //Yell a Question
-		return "Calm down, I know what I'm doing!"
-	}
-	// else if m, _ := regexp.Match("^[A-Z| |0-9|,]*[!]*$", []byte(remark)); m { //Yell
-	// 	return "Whoa, chill out!"
-	// }
+	r := "Whatever."
+	if regexp.MustCompile(`\w[?]$`).MatchString(remark) { //check if it's a question (not yelled)
+		fmt.Println("Normal Question")
+		r = "Sure."
+	} else if regexp.MustCompile(`[A-Z0-9][!]$`).MatchString(remark) { // if you YELL AT HIM (in all capitals).
+		fmt.Println("Yelled statement")
+		r = "Whoa, chill out!"
 
-	words := strings.Fields(remark)
-	// for i, w := range words {
-	// 	if m, _ := regexp.Match("^[A-Z]*[?]$", []byte(w)); m { //Yell a Question
-	// 		return "Calm down, I know what I'm doing!"
-	// 	} else if m, _ := regexp.Match("[?]$", []byte(w)); m { //Question
-	// 		return "Sure."
-	// 	} else if m, _ := regexp.Match("^[A-Z]{2,}.*[!]*[^.]$", []byte(w)); m { //Yell
-	// 		if i == len(words)-1 {
-	// 			return "Whoa, chill out!"
-	// 		}
-	// 	}
-	// }
-	var w string
-	if len(words) > 0 {
-		w = words[len(words)-1] //w is the final word
-	} else {
-		return "Whatever."
+	} else if regexp.MustCompile(`[A-Z0-9_][?]$`).MatchString(remark) { //yell a question at him
+		fmt.Println("Yelled Question")
+		r = "Calm down, I know what I'm doing!"
+	} else if !regexp.MustCompile(`[^a-zA-Z0-9_]+$`).MatchString(remark) { // if you address him without actually saying anything.
+		fmt.Println("Say nothing")
+		r = "Fine. Be that way!"
 	}
-	// m, _ := regexp.Match("^[A-Z]{2,}[?]$", []byte(w)); m { //Yell a Question
-	// 	return "Calm down, I know what I'm doing!"
-	// } else
-	if m, _ := regexp.Match("[?]$", []byte(w)); m { //Question
-		return "Sure."
-	} else if m, _ := regexp.Match("^[A-Z]{2,}.*[!]*[^.]$", []byte(w)); m { //Yell
-		return "Whoa, chill out!"
-	}
-
-	return "Whatever."
+	return r
 }
