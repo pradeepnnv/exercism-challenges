@@ -15,3 +15,8 @@
 # vendor/
 
 *.exercism
+
+*.idea
+*.gradle/
+**/gradle/
+build/
