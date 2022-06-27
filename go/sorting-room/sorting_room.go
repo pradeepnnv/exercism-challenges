@@ -77,7 +77,17 @@ func DescribeAnything(i interface{}) string {
 	var str string
 	switch V := i.(type) {
 	case int:
+		str = DescribeNumber(float64(V))
 	case float64:
-		str = DescribeNumber()
+		str = DescribeNumber(V)
+	case FancyNumber:
+		str = DescribeFancyNumberBox(V)
+	case NumberBox:
+		str = DescribeNumberBox(V)
+	case FancyNumberBox:
+		str = DescribeFancyNumberBox(V)
+	default:
+		str = "Return to sender"
 	}
+	return str
 }
