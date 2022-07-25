@@ -1,8 +1,6 @@
 package dna
 
-import (
-	"fmt"
-)
+import "fmt"
 
 // Histogram is a mapping from nucleotide to its count in given DNA.
 // Choose a suitable data type.
@@ -18,30 +16,14 @@ type DNA string
 // The receiver appears in its own argument list between the func keyword and the method name.
 // Here, the Counts method has a receiver of type DNA named d.
 func (d DNA) Counts() (Histogram, error) {
-	h := make(map[rune]int)
+	h := Histogram{'A': 0, 'C': 0, 'G': 0, 'T': 0}
 
-	// Initizalize the Histogram
-	h['A'] = 0
-	h['C'] = 0
-	h['G'] = 0
-	h['T'] = 0
-
-	if d == "" {
-		return h, nil
-	}
 	for _, r := range d {
-		switch r {
-		case 'A':
-			h[rune(r)]++
-		case 'G':
-			h[rune(r)]++
-		case 'C':
-			h[rune(r)]++
-		case 'T':
-			h[rune(r)]++
-		default:
-			return nil, fmt.Errorf("invalid nucleotide tape")
+		_, ok := h[r]
+		if !ok {
+			return h, fmt.Errorf("invalid nucleotide")
 		}
+		h[r]++
 	}
 	return h, nil
 }
