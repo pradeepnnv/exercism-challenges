@@ -50,6 +50,7 @@ use (
 	./go/proverb
 	./go/raindrops
 	./go/resistor-color
+	./go/resistor-color-duo
 	./go/rna-transcription
 	./go/robot-name
 	./go/roman-numerals
