@@ -71,4 +71,5 @@ use (
 	./go/welcome-to-tech-palace
 	./go/word-count
 	./go/wordy
+	./go/atbash-cipher
 )

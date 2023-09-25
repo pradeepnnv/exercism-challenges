@@ -1,8 +1,3 @@
-// This is a "stub" file.  It's a little start on your solution.
-// It's not a complete solution though; you have to write some code.
-
-// Package bob should have a package comment that summarizes what it's about.
-// https://golang.org/doc/effective_go.html#commentary
 package bob
 
 import (
@@ -10,26 +5,23 @@ import (
 	"strings"
 )
 
-// Hey should have a comment documenting it.
+// Hey returns response of Bob.
 func Hey(remark string) string {
-	r := "Whatever."
-	// if regexp.MustCompile(`[A-Z]\?$`).MatchString(remark) { //yell a question at him
-	// 	fmt.Println("Yelled Question")
-	// 	r = "Calm down, I know what I'm doing!"
-	// } else if regexp.MustCompile(`[A-Z0-9][!]?$`).MatchString(remark) { // if you YELL AT HIM (in all capitals).
-	// 	fmt.Println("Yelled statement")
-	// 	r = "Whoa, chill out!"
-
-	// } else if regexp.MustCompile(`\w[?]$`).MatchString(remark) { //check if it's a question (not yelled)
-	// 	fmt.Println("Normal Question")
-	// 	r = "Sure."
-	// } else if !regexp.MustCompile(`[^a-zA-Z0-9_]+$`).MatchString(remark) { // if you address him without actually saying anything.
-	// 	fmt.Println("Say nothing")
-	// 	r = "Fine. Be that way!"
-	// }
-	remark = strings.Trim(remark, " ")
-	if len(remark) != 1 {
-		fmt.Println("ha ha")
+	if strings.HasSuffix(remark, "?") {
+		return "Sure."
+	} else if IsAllCaps(remark) {
+		return "Whoa, chill out!"
 	}
-	return r
+	return ""
+}
+
+func IsAllCaps(remark string) bool {
+	fmt.Println(remark)
+	for _, c := range remark {
+		fmt.Println(c)
+		if c <= 65 || c >= 90 {
+			return false
+		}
+	}
+	return true
 }
