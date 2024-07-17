@@ -8,6 +8,7 @@ use (
 	./go/animal-magic
 	./go/annalyns-infiltration
 	./go/armstrong-numbers
+	./go/atbash-cipher
 	./go/bird-watcher
 	./go/blackjack
 	./go/bob
@@ -19,6 +20,7 @@ use (
 	./go/clock
 	./go/collatz-conjecture
 	./go/difference-of-squares
+	./go/dnd-character
 	./go/election-day
 	./go/elons-toys
 	./go/etl
@@ -33,6 +35,7 @@ use (
 	./go/largest-series-product
 	./go/lasagna-master
 	./go/leap
+	./go/list-ops
 	./go/logs-logs-logs
 	./go/luhn
 	./go/matching-brackets
@@ -71,5 +74,4 @@ use (
 	./go/welcome-to-tech-palace
 	./go/word-count
 	./go/wordy
-	./go/atbash-cipher
 )
