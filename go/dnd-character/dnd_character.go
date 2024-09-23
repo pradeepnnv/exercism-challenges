@@ -18,7 +18,7 @@ type Character struct {
 // Modifier calculates the ability modifier for a given ability score
 func Modifier(score int) int {
 	di := float64(score - 10)
-	fr := float64(di / 2.0)
+	fr := float64(di / 2.0) // when dividing variables, both of them have to be float for answer to be in float
 	rn := math.Floor(fr)
 	return int(rn)
 }
@@ -35,7 +35,7 @@ func Ability() int {
 
 // GenerateCharacter creates a new Character with random scores for abilities
 func GenerateCharacter() Character {
-	a := []int{}
+	a := []int{} // combo of make and append will cause zeros to be available in the beginning. Hence switched to empty slice.
 	for i := 0; i < 6; i++ {
 		a = append(a, Ability(), Ability(), Ability())
 	}
