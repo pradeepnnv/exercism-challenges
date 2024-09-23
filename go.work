@@ -19,6 +19,7 @@ use (
 	./go/chessboard
 	./go/clock
 	./go/collatz-conjecture
+	./go/darts
 	./go/difference-of-squares
 	./go/dnd-character
 	./go/election-day
