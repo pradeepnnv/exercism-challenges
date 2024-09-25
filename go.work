@@ -1,6 +1,7 @@
-go 1.20
+go 1.22.2
 
 use (
+	./go
 	./go/acronym
 	./go/airport-robot
 	./go/all-your-base
